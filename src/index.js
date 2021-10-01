@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes/bolos.routes');
+const routes = require('./routes/materia-prima.routes');
 
 const app = express();
 const port = 8080;
