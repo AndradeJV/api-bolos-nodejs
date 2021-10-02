@@ -28,7 +28,7 @@ const MateriaPrima = mongoose.model('MateriaPrima', {
     required: true,
   },
 
-  createDate: {
+  createdDate: {
     type: Date,
   }
 

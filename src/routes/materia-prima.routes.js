@@ -6,20 +6,38 @@ const MateriaPrima = require('../models/materiaPrima');
 router.get('/rawMaterials', async (req, res) => {
 
   try {
-
     const materiaPrima = await MateriaPrima.find({ });
-    res.json({ error: true, materiaPrima });
+    res.json({ error: false, materiaPrima });
     
   } catch (error) {
     res.json({ error: error, message: error.message });
   }
-
-
 });
 
-router.get('/rawMaterials?name/:name', (req, res) => {
-  const name = req.params.id;
-  res.json({ mensagem: `Teste ${name}` });
+router.get('/rawMaterials/:name', async (req, res) => {
+
+  try {
+    const materiaPrima = await MateriaPrima.find({
+      name: req.params.name
+     });
+    res.json({ error: false, materiaPrima });
+    
+  } catch (error) {
+    res.json({ error: error, message: error.message });
+  }
+});
+
+router.get('/rawMaterials/:user', async (req, res) => {
+
+  try {
+    const materiaPrima = await MateriaPrima.find({
+      user: req.params.user
+     });
+    res.json({ error: false, materiaPrima });
+    
+  } catch (error) {
+    res.json({ error: error, message: error.message });
+  }
 });
 
 router.post('/rawMaterials', async (req, res) => {
@@ -34,12 +52,19 @@ router.post('/rawMaterials', async (req, res) => {
   }
 });
 
+router.put('/rawMaterials/:id/request', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const materiaPrima = req.body;
+    const atualizaMateriaPrima = await MateriaPrima.findByIdAndUpdate(id, materiaPrima);
+    
+    res.json({ error: false, atualizaMateriaPrima });
 
-router.put('/rawMaterials/:id/request', (req, res) => {
-  const id = req.params.id;
-  res.json({ mensagem: `${id}` });
+  } catch (error) {
+    res.json({ error: true, message: error.message })
+  }
+
 });
-
 
 
 module.exports = router;
