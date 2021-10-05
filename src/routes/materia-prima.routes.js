@@ -14,12 +14,12 @@ router.get('/rawMaterials', async (req, res) => {
   }
 });
 
-router.get('/rawMaterials/:name', async (req, res) => {
+router.get('/rawMaterials/:id', async (req, res) => {
 
   try {
-    const materiaPrima = await MateriaPrima.find({
-      name: req.params.name
-     });
+    const id = req.params.id;
+    const materiaPrima = await MateriaPrima.findById(id);
+
     res.json({ error: false, materiaPrima });
     
   } catch (error) {
@@ -27,18 +27,6 @@ router.get('/rawMaterials/:name', async (req, res) => {
   }
 });
 
-router.get('/rawMaterials/:user', async (req, res) => {
-
-  try {
-    const materiaPrima = await MateriaPrima.find({
-      user: req.params.user
-     });
-    res.json({ error: false, materiaPrima });
-    
-  } catch (error) {
-    res.json({ error: error, message: error.message });
-  }
-});
 
 router.post('/rawMaterials', async (req, res) => {
 
