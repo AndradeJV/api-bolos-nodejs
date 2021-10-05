@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/materia-prima.routes');
 
 const app = express();
-const port = 8080;
+const port = process.env.port || 3333;
+
 
 app.use(bodyParser.json());
 app.use('/', routes)
