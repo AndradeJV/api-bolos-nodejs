@@ -30,20 +30,6 @@ router.get('/rawMaterials/:id', async (req, res) => {
 
 });
 
-router.get('/rawMaterials/:name/req', async (req, res) => {
-
-  try {
-    const name = req.params.name;
-    const materiaPrima = await MateriaPrima.findById(name);
-
-    res.json({ error: false, materiaPrima });
-    
-  } catch (error) {
-    res.json({ error: error, message: error.message });
-  }
-
-});
-
 router.post('/rawMaterials', async (req, res) => {
 
   try {
