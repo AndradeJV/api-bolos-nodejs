@@ -33,3 +33,9 @@ chamadas em nossa API.
     - Get :id
     - Post
     - Put
+
+#
+### Obs.:
+- Caso necessário, incluir framework express e algumas dependências
+  - Express: npm install express
+  - Body-Parser: npm install body-parser / yarn add body-parser (forma usada no teste)
